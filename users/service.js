@@ -22,13 +22,16 @@ module.exports = (app) => {
         dao.updateUser(req.params.id, req.body)
             .then(status => res.send(status));
 
-    const loginUser = (req, res) =>
-        dao.findUserByUserNamePassword().then(user => user.json(user));
+    const loginUser = (req, res) => {
+        dao.findUserByEmailIdPassword(req.params.email, req.params.password)
+            .then(user => res.json(user));
+    }
 
     app.get("/register/user", findAllUsers);
     app.delete("/register/user/:id", deleteUser);
     app.post("/register/user", createUser);
     app.get("/register/user/:id", findUserById);
     app.put("/register/user/:id", updateUser);
-    app.post("/login/user", loginUser);
+    // app.post("/login/user", loginUser);
+    app.get("/login/user/:email/:password", loginUser);
 }
