@@ -32,6 +32,5 @@ module.exports = (app) => {
     app.post("/register/user", createUser);
     app.get("/register/user/:id", findUserById);
     app.put("/register/user/:id", updateUser);
-    // app.post("/login/user", loginUser);
     app.get("/login/user/:email/:password", loginUser);
 }
