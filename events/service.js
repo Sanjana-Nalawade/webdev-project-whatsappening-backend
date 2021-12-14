@@ -14,6 +14,12 @@ module.exports = (app) => {
         dao.searchEventByKeywords(req.params.searchString).then(results => res.json(results));
     }
 
+    const fetchEventById = (req, res) =>
+        dao.fetchEventById(req.params.id)
+            .then(event => res.json(event));
+
+
+    app.get("/event/:id", fetchEventById);
     app.get("/event", getAllEvents);
     app.post("/event", createEvent);
     app.get("/event/:searchString", searchEventByKeywords);
