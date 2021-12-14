@@ -12,8 +12,9 @@ const findUserById = (id) =>
     model.find().findOne({_id:id});
 
 const updateUser = (id, user) =>
-    model.updateOne({_id: id},
-        {$set: user});
+    model.find().findOneAndUpdate({_id:id},{$set:user});
+    // model.updateOne({_id: id},
+    //     {$set: user});
 
 const findUserByEmailIdPassword = (email,password) =>
     model.find().findOne({email:email,password:password});
