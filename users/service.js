@@ -27,10 +27,10 @@ module.exports = (app) => {
             .then(user => res.json(user));
     }
 
-    app.get("/register/user", findAllUsers);
+    app.get("/user", findAllUsers);
     app.delete("/register/user/:id", deleteUser);
     app.post("/register/user", createUser);
-    app.get("/register/user/:id", findUserById);
+    app.get("/user/:id", findUserById);
     app.put("/register/user/:id", updateUser);
     app.get("/login/user/:email/:password", loginUser);
 }

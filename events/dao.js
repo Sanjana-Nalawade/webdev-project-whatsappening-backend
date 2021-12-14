@@ -1,6 +1,6 @@
 const model = require('./model');
 
-const getAllEvents = () => model.find().sort({postTime: -1});
+const getAllEvents = () => model.find().sort({_id: -1});
 
 const createEvent = (event) =>
     model.create(event);

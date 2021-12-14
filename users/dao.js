@@ -9,7 +9,7 @@ const createUser = (user) =>
     model.create(user);
 
 const findUserById = (id) =>
-    model.findById(id);
+    model.find().findOne({_id:id});
 
 const updateUser = (id, user) =>
     model.updateOne({_id: id},
