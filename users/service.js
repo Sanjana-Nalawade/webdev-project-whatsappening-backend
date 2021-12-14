@@ -19,8 +19,9 @@ module.exports = (app) => {
             .then(user => res.json(user));
 
     const updateUser = (req, res) =>
+    {
         dao.updateUser(req.params.id, req.body)
-            .then(status => res.send(status));
+            .then(status => res.send(status))};
 
     const loginUser = (req, res) => {
         dao.findUserByEmailIdPassword(req.params.email, req.params.password)
