@@ -8,6 +8,7 @@ const createEvent = (event) =>
 const searchEventByKeywords = (keyword) =>
     model.find({$text: {$search:keyword}});
 
+
 const getTodayEvents = () => {
     let start = new Date();
     start.setHours(0,0,0,0);
@@ -22,6 +23,9 @@ const getTodayEvents = () => {
 const getLatestPosts = () =>
     model.find().sort({_id: -1}).limit(4);
 
+const fetchEventById = (id) =>
+    model.findById(id);
+
 module.exports = {
-    getAllEvents, createEvent, searchEventByKeywords, getTodayEvents, getLatestPosts
+    getAllEvents, createEvent, searchEventByKeywords, getTodayEvents, getLatestPosts, fetchEventById
 };
