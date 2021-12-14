@@ -9,6 +9,15 @@ const searchEventByKeywords = (keyword) =>
     model.find({$text: {$search:keyword}});
 
 
+const likeEvent = (uid,eid) =>
+    model.updateOne({_id : eid},{$addToSet:{"likedBy" : uid}, $inc: { "likes": 1 }});
+
+const dislikeEvent = (uid,eid) =>
+    model.updateOne({_id : eid},{$pull:{"likedBy" : uid}, $inc: { "likes": -1 }});
+
+
+
+
 const getTodayEvents = () => {
     let start = new Date();
     start.setHours(0,0,0,0);
@@ -27,5 +36,5 @@ const fetchEventById = (id) =>
     model.findById(id);
 
 module.exports = {
-    getAllEvents, createEvent, searchEventByKeywords, getTodayEvents, getLatestPosts, fetchEventById
+    getAllEvents, createEvent, searchEventByKeywords, getTodayEvents, getLatestPosts, fetchEventById, likeEvent, dislikeEvent
 };
