@@ -8,6 +8,10 @@ const createEvent = (event) =>
 const searchEventByKeywords = (keyword) =>
     model.find({$text: {$search:keyword}});
 
+const fetchEventById = (id) =>
+    model.findById(id);
+
+
 module.exports = {
-    getAllEvents, createEvent, searchEventByKeywords
+    getAllEvents, createEvent, searchEventByKeywords, fetchEventById
 };
