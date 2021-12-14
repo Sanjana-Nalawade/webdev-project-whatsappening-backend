@@ -14,13 +14,24 @@ module.exports = (app) => {
         dao.searchEventByKeywords(req.params.searchString).then(results => res.json(results));
     }
 
+
+    const getTodayEvents = (req, res) =>
+        dao.getTodayEvents().then(events => res.json(events))
+
+    const getLatestPosts = (req, res) =>
+        dao.getLatestPosts()
+            .then(events => res.json(events));
+
+
     const fetchEventById = (req, res) =>
         dao.fetchEventById(req.params.id)
             .then(event => res.json(event));
 
 
-    app.get("/event/:id", fetchEventById);
+    app.get("/event/:id/fetch", fetchEventById);
     app.get("/event", getAllEvents);
     app.post("/event", createEvent);
     app.get("/event/:searchString", searchEventByKeywords);
+    app.get("/event/today", getTodayEvents);
+    app.get("/latestposts", getLatestPosts);
 }
