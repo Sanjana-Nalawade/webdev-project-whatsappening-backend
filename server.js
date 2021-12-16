@@ -20,6 +20,7 @@ app.use(function(req, res, next) {
 
 require('./users/service')(app);
 require('./events/service')(app);
+require('./posts/service')(app);
 
 app.get('/hello', (req, res) => {
     res.send('Hello World!');
